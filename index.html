@@ -1,303 +1,333 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go Green Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Go Green Auto</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <body>
+    <header class="nav">
+      <div class="nav__container">
+        <a class="nav__brand" href="#">
+          <img
+            src="assets/Go Green Auto Header logo .png"
+            alt="Go Green Auto logo"
+            class="nav__logo--img"
+          />
+        </a>
 
-<body>
-  <header class="nav">
-    <div class="nav__container">
-      <a class="nav__brand" href="#">
-        <img src="assets/Go Green Auto Header logo .png" alt="Go Green Auto logo" class="nav__logo--img" />
-      </a>
-      <div class="nav__search">
-        <input class="nav__search--input" id="searchInput" type="text" placeholder="Search cars" />
-        <button id="searchBtn" class="nav__search--btn" type="button">Search</button>
+        <div class="nav__search">
+          <input
+            class="nav__search--input"
+            id="searchInput"
+            type="text"
+            placeholder="Search cars"
+          />
+          <button id="searchBtn" class="nav__search--btn" type="button">
+            Search
+          </button>
+        </div>
+
+        <nav class="nav__links">
+          <a class="nav__link" href="#">Home</a>
+          <a class="nav__link" href="#">New</a>
+          <a class="nav__link" href="#">Brands</a>
+          <a class="nav__link" href="#">Watchlist</a>
+        </nav>
       </div>
-      <nav class="nav__links">
-        <a class="nav__link" href="#">Home</a>
-        <a class="nav__link" href="#">New</a>
-        <a class="nav__link" href="#">Brands</a>
-        <a class="nav__link" href="#">Watchlist</a>
-      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-overlay">
+          <p class="eyebrow">Featured Premiere</p>
+          <h1>Lucid Air Sapphire</h1>
+          <p class="hero-copy">
+            Triple-motor performance, luxury cabin, and stunning all-electric acceleration.
+            Explore specs, range, and charging in one cinematic view.
+          </p>
+
+          <div class="hero-actions">
+            <button id="playTrailerBtn" class="btn btn-primary" type="button">
+              Play Trailer
+            </button>
+            <button class="btn btn-muted" type="button">More Info</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="controls">
+        <!-- FIX: your CSS might be .controls__labels — pick ONE name and match it.
+             I’m using controls__label here (simple). -->
+        <label class="controls__label" for="sortSelect">Sort by:</label>
+
+        <select id="sortSelect" class="controls__select">
+          <option value="default">Default</option>
+          <option value="az">A to Z</option>
+          <!-- OPTIONAL: only include if you added ZA in JS -->
+          <!-- <option value="za">Z to A</option> -->
+        </select>
+      </div>
+
+      <section class="content-section">
+        <h2>Trending Electric Cars</h2>
+        <div class="row-shell">
+          <button
+            class="row-nav prev"
+            type="button"
+            aria-label="Scroll left"
+            data-row-target="trending"
+          >
+            &#10094;
+          </button>
+
+          <div class="card-row" id="trending">
+            <article class="car-card">
+              <img src="assets/Tesla Model S.jpeg" alt="Tesla Model S driving on road" />
+              <div class="card-meta">
+                <h3>Tesla Model S</h3>
+                <p>Up to 405 mi range</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Porsche Taycan.jpeg" alt="Porsche Taycan parked in city" />
+              <div class="card-meta">
+                <h3>Porsche Taycan</h3>
+                <p>Performance EV icon</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Hyundai IONIQ 5.jpeg" alt="Hyundai IONIQ 5 front angle" />
+              <div class="card-meta">
+                <h3>Hyundai IONIQ 5</h3>
+                <p>Fast-charge ready</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/BMW i4.jpeg" alt="BMW i4 in motion" />
+              <div class="card-meta">
+                <h3>BMW i4</h3>
+                <p>Sport sedan feel</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Mercedes EQS.jpeg" alt="Mercedes EQS side profile" />
+              <div class="card-meta">
+                <h3>Mercedes EQS</h3>
+                <p>Executive comfort EV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Lucid Air-catalog.jpeg" alt="Lucid Air parked near mountains" />
+              <div class="card-meta">
+                <h3>Lucid Air</h3>
+                <p>Luxury long range</p>
+              </div>
+            </article>
+          </div>
+
+          <button
+            class="row-nav next"
+            type="button"
+            aria-label="Scroll right"
+            data-row-target="trending"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Electric SUVs</h2>
+        <div class="row-shell">
+          <button
+            class="row-nav prev"
+            type="button"
+            aria-label="Scroll left"
+            data-row-target="suvs"
+          >
+            &#10094;
+          </button>
+
+          <div class="card-row" id="suvs">
+            <article class="car-card">
+              <img src="assets/2023_Rivian_R1S.jpg" alt="Rivian R1S off-road style view" />
+              <div class="card-meta">
+                <h3>Rivian R1S</h3>
+                <p>Adventure electric SUV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/ex30-electric.webp" alt="Volvo EX30 in urban setting" />
+              <div class="card-meta">
+                <h3>Volvo EX30</h3>
+                <p>Compact premium SUV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/2024_Ford_Mustang_Mach-E.jpeg" alt="Ford Mustang Mach-E front view" />
+              <div class="card-meta">
+                <h3>Mach-E</h3>
+                <p>Athletic crossover</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Kia EV9.avif" alt="Kia EV9 parked at sunset" />
+              <div class="card-meta">
+                <h3>Kia EV9</h3>
+                <p>Three-row electric SUV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Audi E-tron.jpeg" alt="Audi Q8 e-tron in silver" />
+              <div class="card-meta">
+                <h3>Audi Q8 e-tron</h3>
+                <p>Premium everyday EV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Nissan Ariya.jpeg" alt="Nissan Ariya in white color" />
+              <div class="card-meta">
+                <h3>Nissan Ariya</h3>
+                <p>Sleek family crossover</p>
+              </div>
+            </article>
+          </div>
+
+          <button
+            class="row-nav next"
+            type="button"
+            aria-label="Scroll right"
+            data-row-target="suvs"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Coming Soon</h2>
+        <div class="row-shell">
+          <button
+            class="row-nav prev"
+            type="button"
+            aria-label="Scroll left"
+            data-row-target="soon"
+          >
+            &#10094;
+          </button>
+
+          <div class="card-row" id="soon">
+            <article class="car-card">
+              <img src="assets/Polestar 5.jpeg" alt="Polestar concept style electric car" />
+              <div class="card-meta">
+                <h3>Polestar 5</h3>
+                <p>Grand touring EV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Cadillac Celestiq.jpeg" alt="Cadillac Celestiq luxury electric concept" />
+              <div class="card-meta">
+                <h3>Cadillac Celestiq</h3>
+                <p>Ultra-luxury electric</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Afeela EV.avif" alt="Future EV silhouette at night" />
+              <div class="card-meta">
+                <h3>Afeela EV</h3>
+                <p>Software-first vehicle</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Genesis GV90.avif" alt="Electric sedan concept in city lights" />
+              <div class="card-meta">
+                <h3>Genesis GV90</h3>
+                <p>Flagship electric SUV</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Lotus Type 135.avif" alt="Sports electric coupe concept" />
+              <div class="card-meta">
+                <h3>Lotus Type 135</h3>
+                <p>Electric sports coupe</p>
+              </div>
+            </article>
+
+            <article class="car-card">
+              <img src="assets/Scout Traveler EV.avif" alt="Electric crossover near bridge" />
+              <div class="card-meta">
+                <h3>Scout Traveler EV</h3>
+                <p>Retro off-road revival</p>
+              </div>
+            </article>
+          </div>
+
+          <button
+            class="row-nav next"
+            type="button"
+            aria-label="Scroll right"
+            data-row-target="soon"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__brand">
+          <img
+            src="assets/Go Green Car website Footer.png"
+            alt="Go Green Auto Logo"
+            class="footer__logo--img"
+          />
+        </div>
+        <p>&copy; 2026 Go Green Auto. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- FIX: keep modal OUTSIDE footer and before </body> -->
+    <div id="trailerModal" class="trailer-modal">
+      <div class="trailer-modal__content">
+        <span id="closeTrailer" class="trailer-modal__close">&times;</span>
+
+        <!-- FIX: use a REAL embed URL (not /shorts). You already have it right here -->
+        <iframe
+          width="100%"
+          height="450"
+          src="https://www.youtube.com/embed/5gw91lFMckg"
+          title="Trailer"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-overlay">
-        <p class="eyebrow">Featured Premiere</p>
-        <h1>Lucid Air Sapphire</h1>
-        <p class="hero-copy">
-          Triple-motor performance, luxury cabin, and stunning all-electric acceleration.
-          Explore specs, range, and charging in one cinematic view.
-        </p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" type="button">Play Trailer</button>
-          <button class="btn btn-muted" type="button">More Info</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h2>Trending Electric Cars</h2>
-      <div class="row-shell">
-        <button class="row-nav prev" type="button" aria-label="Scroll left" data-row-target="trending">
-          &#10094;
-        </button>
-        <div class="card-row" id="trending">
-          <article class="car-card">
-            <img src="assets/Tesla Model S.jpeg"
-              alt="Tesla Model S driving on road" />
-            <div class="card-meta">
-              <h3>Tesla Model S</h3>
-              <p>Up to 405 mi range</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Porsche Taycan.jpeg"
-              alt="Porsche Taycan parked in city" />
-            <div class="card-meta">
-              <h3>Porsche Taycan</h3>
-              <p>Performance EV icon</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Hyundai IONIQ 5.jpeg"
-              alt="Hyundai IONIQ 5 front angle" />
-            <div class="card-meta">
-              <h3>Hyundai IONIQ 5</h3>
-              <p>Fast-charge ready</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/BMW i4.jpeg"
-              alt="BMW i4 in motion" />
-            <div class="card-meta">
-              <h3>BMW i4</h3>
-              <p>Sport sedan feel</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Mercedes EQS.jpeg"
-              alt="Mercedes EQS side profile" />
-            <div class="card-meta">
-              <h3>Mercedes EQS</h3>
-              <p>Executive comfort EV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Lucid Air-catalog.jpeg"
-              alt="Lucid Air parked near mountains" />
-            <div class="card-meta">
-              <h3>Lucid Air</h3>
-              <p>Luxury long range</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-        </div>
-        <button class="row-nav next" type="button" aria-label="Scroll right" data-row-target="trending">
-          &#10095;
-        </button>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h2>Electric SUVs</h2>
-      <div class="row-shell">
-        <button class="row-nav prev" type="button" aria-label="Scroll left" data-row-target="suvs">
-          &#10094;
-        </button>
-        <div class="card-row" id="suvs">
-          <article class="car-card">
-            <img src="assets/2023_Rivian_R1S.jpg"
-              alt="Rivian R1S off-road style view" />
-            <div class="card-meta">
-              <h3>Rivian R1S</h3>
-              <p>Adventure electric SUV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/ex30-electric.webp"
-              alt="Volvo EX30 in urban setting" />
-            <div class="card-meta">
-              <h3>Volvo EX30</h3>
-              <p>Compact premium SUV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/2024_Ford_Mustang_Mach-E.jpeg"
-              alt="Ford Mustang Mach-E front view" />
-            <div class="card-meta">
-              <h3>Mach-E</h3>
-              <p>Athletic crossover</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Kia EV9.avif"
-              alt="Kia EV9 parked at sunset" />
-            <div class="card-meta">
-              <h3>Kia EV9</h3>
-              <p>Three-row electric SUV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Audi E-tron.jpeg"
-              alt="Audi Q8 e-tron in silver" />
-            <div class="card-meta">
-              <h3>Audi Q8 e-tron</h3>
-              <p>Premium everyday EV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Nissan Ariya.jpeg"
-              alt="Nissan Ariya in white color" />
-            <div class="card-meta">
-              <h3>Nissan Ariya</h3>
-              <p>Sleek family crossover</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-        </div>
-        <button class="row-nav next" type="button" aria-label="Scroll right" data-row-target="suvs">
-          &#10095;
-        </button>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h2>Coming Soon</h2>
-      <div class="row-shell">
-        <button class="row-nav prev" type="button" aria-label="Scroll left" data-row-target="soon">
-          &#10094;
-        </button>
-        <div class="card-row" id="soon">
-          <article class="car-card">
-            <img src="assets/Polestar 5.jpeg"
-              alt="Polestar concept style electric car" />
-            <div class="card-meta">
-              <h3>Polestar 5</h3>
-              <p>Grand touring EV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Cadillac Celestiq.jpeg"
-              alt="Cadillac Celestiq luxury electric concept" />
-            <div class="card-meta">
-              <h3>Cadillac Celestiq</h3>
-              <p>Ultra-luxury electric</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Afeela EV.avif"
-              alt="Future EV silhouette at night" />
-            <div class="card-meta">
-              <h3>Afeela EV</h3>
-              <p>Software-first vehicle</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Genesis GV90.avif"
-              alt="Electric sedan concept in city lights" />
-            <div class="card-meta">
-              <h3>Genesis GV90</h3>
-              <p>Flagship electric SUV</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Lotus Type 135.avif"
-              alt="Sports electric coupe concept" />
-            <div class="card-meta">
-              <h3>Lotus Type 135</h3>
-              <p>Electric sports coupe</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-          <article class="car-card">
-            <img src="assets/Scout Traveler EV.avif"
-              alt="Electric crossover near bridge" />
-            <div class="card-meta">
-              <h3>Scout Traveler EV</h3>
-              <p>Retro off-road revival</p>
-              <div class="card__overlay">
-                <button class="card__overlay--button">More Info</button>
-              </div>
-            </div>
-          </article>
-        </div>
-        <button class="row-nav next" type="button" aria-label="Scroll right" data-row-target="soon">
-          &#10095;
-        </button>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-<footer class="footer">
-  <div class="footer__content">
-  <div class="footer__brand">
-    <img src="assets/Go Green Car website Footer.png" alt="Go Green Auto Logo" class="footer__logo--img" />
-  </div>
-  <p>&copy; 2026 Go Green Auto. All rights reserved.</p>
-  </div>
-</footer>
-
+    <!-- FIX: script at the very bottom so elements exist before JS runs -->
+    <script src="script.js"></script>
+  </body>
 </html>

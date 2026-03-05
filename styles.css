@@ -23,24 +23,13 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(
-      1200px 600px at 18% -10%,
-      rgba(66, 216, 142, 0.24),
-      transparent 46%
-    ),
-    radial-gradient(
-      900px 480px at 90% 0%,
-      rgba(25, 184, 255, 0.2),
-      transparent 40%
-    ),
+    radial-gradient(1200px 600px at 18% -10%, rgba(66, 216, 142, 0.24), transparent 46%),
+    radial-gradient(900px 480px at 90% 0%, rgba(25, 184, 255, 0.2), transparent 40%),
     var(--bg);
   min-height: 100vh;
 }
 
-
 /* NAVIGATION */
-
-
 .nav {
   position: fixed;
   top: 0;
@@ -53,13 +42,20 @@ body {
     rgba(2, 8, 11, 0.05)
   );
 }
-  
+
 .nav__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding: 16px 24px;
+}
+
+/* FIX: your HTML uses .nav__links, so style that as flex */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .nav__brand {
@@ -74,32 +70,33 @@ body {
   object-fit: contain;
 }
 
+/* FIX: keep underline animation on links */
 .nav__link {
   position: relative;
   color: #ffffff;
   text-decoration: none;
 }
 
-
-.nav__link:hover::after {
-  width: 100%;
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* looks better than 0 */
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
 }
 
 .nav__link:hover {
   color: var(--accent);
 }
 
-.nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background-color: var(--accent);
-  transition: width 0.3s ease;
+.nav__link:hover::after {
+  width: 100%;
 }
 
+/* Search */
 .nav__search {
   display: flex;
   align-items: center;
@@ -119,7 +116,8 @@ body {
   outline: none;
 }
 
-.nav__search-input::placeholder {
+/* FIX: your class is nav__search--input (two dashes) */
+.nav__search--input::placeholder {
   color: rgba(237, 242, 247, 0.65);
 }
 
@@ -133,8 +131,7 @@ body {
   color: #062213;
 }
 
-
-
+/* HERO */
 .hero {
   min-height: 72vh;
   margin-bottom: 8px;
@@ -202,6 +199,7 @@ h1 {
   backdrop-filter: blur(3px);
 }
 
+/* CONTENT */
 .content-section {
   padding: 6px 22px 26px;
 }
@@ -290,6 +288,7 @@ h2 {
   color: #cbdae8;
 }
 
+/* Row arrows */
 .row-nav {
   position: absolute;
   top: 50%;
@@ -303,9 +302,7 @@ h2 {
   background: rgba(2, 8, 11, 0.62);
   color: #f3f7fb;
   font-size: 1.3rem;
-  transition:
-    opacity 0.2s ease,
-    background 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease;
 }
 
 .row-nav:hover {
@@ -325,8 +322,53 @@ h2 {
   cursor: default;
 }
 
-/*Footer*/
+/* Trailer modal */
+.trailer-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* FIX: make sure it sits above everything */
+  padding: 16px;
+}
 
+.trailer-modal__content {
+  width: 100%;
+  max-width: 800px;
+}
+
+.trailer-modal__close {
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Controls */
+.controls {
+  padding: 90px 22px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* FIX: your HTML uses controls__labels (plural) */
+.controls__labels {
+  font-weight: 700;
+}
+
+.controls__select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  outline: none;
+}
+
+/* Footer */
 .footer__content {
   max-width: 1200px;
   margin: 0 auto;
@@ -357,10 +399,6 @@ h2 {
 }
 
 @media (max-width: 760px) {
-  .topnav {
-    display: none;
-  }
-
   .hero {
     min-height: 60vh;
     padding-top: 88px;
@@ -379,6 +417,11 @@ h2 {
   }
 
   .nav__search {
-  display: none;
-}
+    display: none;
+  }
+
+  /* FIX: your old CSS hid .topnav, but you don't have that class anymore */
+  .nav__links {
+    display: none;
+  }
 }
