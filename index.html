@@ -29,7 +29,7 @@
             class="nav__search--input"
             id="searchInput"
             type="text"
-            placeholder="Search cars"
+            placeholder="Search by make (Tesla, Ford, Audi)"
           />
           <button id="searchBtn" class="nav__search--btn" type="button">
             Search
@@ -65,17 +65,18 @@
       </section>
 
       <div class="controls">
-        <!-- FIX: your CSS might be .controls__labels — pick ONE name and match it.
-             I’m using controls__label here (simple). -->
         <label class="controls__label" for="sortSelect">Sort by:</label>
-
         <select id="sortSelect" class="controls__select">
           <option value="default">Default</option>
           <option value="az">A to Z</option>
-          <!-- OPTIONAL: only include if you added ZA in JS -->
-          <!-- <option value="za">Z to A</option> -->
+          <option value="za">Z to A</option>
         </select>
       </div>
+
+      <section class="content-section">
+        <h2>Search Results</h2>
+        <div id="searchResults" class="search-results"></div>
+      </section>
 
       <section class="content-section">
         <h2>Trending Electric Cars</h2>
@@ -310,12 +311,9 @@
       </div>
     </footer>
 
-    <!-- FIX: keep modal OUTSIDE footer and before </body> -->
     <div id="trailerModal" class="trailer-modal">
       <div class="trailer-modal__content">
         <span id="closeTrailer" class="trailer-modal__close">&times;</span>
-
-        <!-- FIX: use a REAL embed URL (not /shorts). You already have it right here -->
         <iframe
           width="100%"
           height="450"
@@ -327,7 +325,6 @@
       </div>
     </div>
 
-    <!-- FIX: script at the very bottom so elements exist before JS runs -->
     <script src="script.js"></script>
   </body>
 </html>

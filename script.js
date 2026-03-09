@@ -52,35 +52,54 @@ document.querySelectorAll(".row-nav").forEach((button) => {
 });
 
 // =======================
-// Search Feature
+// Search Feature (API fetch)
+// Uses NHTSA vPIC GetModelsForMake
 // =======================
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
+const searchResults = document.getElementById("searchResults");
 
-const carPages = {
-  "rivian r1s": "rivian.html",
-  "volvo ex30": "volvo.html",
-  "mach e": "mache.html",
-  "kia ev9": "ev9.html",
-  "audi q8 e tron": "audi.html",
-  "nissan ariya": "ariya.html",
-  "polestar 5": "polestar.html",
-  "cadillac celestiq": "celestiq.html",
-  "afeela ev": "afeela.html",
-  "genesis gv90": "gv90.html",
-  "lotus type 135": "lotus.html",
-  "scout traveler ev": "scout.html",
-};
+async function runSearch() {
+  if (!searchInput || !searchResults) return;
 
-function runSearch() {
-  if (!searchInput) return;
+  const userInput = searchInput.value.trim();
 
-  const userInput = searchInput.value.toLowerCase().trim();
+  if (!userInput) {
+    searchResults.innerHTML = "<p>Please enter a car make.</p>";
+    return;
+  }
 
-  if (carPages[userInput]) {
-    window.open(carPages[userInput], "_blank");
-  } else {
-    alert("Car not found.");
+  searchResults.innerHTML = "<p>Loading...</p>";
+
+  try {
+    const response = await fetch(
+      `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${encodeURIComponent(
+        userInput
+      )}?format=json`
+    );
+
+    const data = await response.json();
+
+    if (!data.Results || data.Results.length === 0) {
+      searchResults.innerHTML = "<p>No results found.</p>";
+      return;
+    }
+
+    const firstSix = data.Results.slice(0, 6);
+
+    searchResults.innerHTML = firstSix
+      .map(
+        (car) => `
+          <article class="search-card">
+            <h3>${car.Model_Name}</h3>
+            <p>${car.Make_Name}</p>
+          </article>
+        `
+      )
+      .join("");
+  } catch (error) {
+    console.error("Search error:", error);
+    searchResults.innerHTML = "<p>Something went wrong.</p>";
   }
 }
 
@@ -93,11 +112,10 @@ if (searchBtn && searchInput) {
 }
 
 // =======================
-// Sorting Filter (Default / A-Z / Z-A)
+// Sorting Filter
 // =======================
 const sortSelect = document.getElementById("sortSelect");
 
-// Save original order (so Default works)
 const defaultOrderMap = new Map();
 document.querySelectorAll(".card-row").forEach((row) => {
   defaultOrderMap.set(row.id, Array.from(row.querySelectorAll(".car-card")));
@@ -134,12 +152,18 @@ if (sortSelect) {
 }
 
 // =======================
-// Trailer Modal (Popup)
+// Trailer Modal
 // =======================
 const playTrailerBtn = document.getElementById("playTrailerBtn");
 const trailerModal = document.getElementById("trailerModal");
 const closeTrailer = document.getElementById("closeTrailer");
 const trailerVideo = document.querySelector("#trailerModal iframe");
+
+function resetTrailer() {
+  if (!trailerVideo) return;
+  trailerVideo.src = "";
+  trailerVideo.src = "https://www.youtube.com/embed/5gw91lFMckg";
+}
 
 if (playTrailerBtn && trailerModal) {
   playTrailerBtn.addEventListener("click", () => {
@@ -147,24 +171,18 @@ if (playTrailerBtn && trailerModal) {
   });
 }
 
-if (closeTrailer && trailerModal && trailerVideo) {
+if (closeTrailer && trailerModal) {
   closeTrailer.addEventListener("click", () => {
     trailerModal.style.display = "none";
-
-    // STOP VIDEO (guaranteed)
-    trailerVideo.src = "";
-    trailerVideo.src = "https://www.youtube.com/embed/5gw91lFMckg";
+    resetTrailer();
   });
 }
 
-    
-
-// Optional: click outside modal content to close (still simple)
 if (trailerModal) {
   trailerModal.addEventListener("click", (e) => {
     if (e.target === trailerModal) {
       trailerModal.style.display = "none";
+      resetTrailer();
     }
-
   });
 }
